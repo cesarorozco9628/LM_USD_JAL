@@ -29,6 +29,7 @@ const put_params_bulding = (data) => {
         >
         </iframe>
       `
+      
 }
 
 window.onload = function() {
