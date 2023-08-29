@@ -24,12 +24,11 @@ const put_params_bulding = (data) => {
     params = hash_text(params);
     div_ifrm.innerHTML += `
       <iframe 
-            src="http://10.10.0.240:8003/lamudi/quote/first_step/${params.length>0 ? `?${params}`:''}"
+            src="https://novauat.morgana.mx/quote/first_step/${params.length>0 ? `?${params}`:''}"
             style="width:100%;${is_mobile ? 'height:700px;' : 'height:550px;'} "
         >
         </iframe>
       `
-      
 }
 
 window.onload = function() {
