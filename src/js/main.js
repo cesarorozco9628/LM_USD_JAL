@@ -49,7 +49,6 @@ const put_params_bulding = (data) => {
 
 window.onload = function() {
     const ifm_mrg_data = document.getElementById('id_space_sb').dataset;
-    debugger
     const data = {
         username:'',
         id:'id_space_sb',
