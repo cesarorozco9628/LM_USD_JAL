@@ -16,11 +16,11 @@ function hash_text(text){
 }
 
 const put_params_bulding = (data) => {
-    let { username ,id, valueBulding, stateBulding, currency, nameBulding, subDom,urlBulding } = data;
+    let { username ,id, valueBulding, stateBulding, currency, nameBulding, subDom,urlBulding, propertyType, auction } = data;
 
     let is_mobile = /Mobile/i.test(navigator.userAgent);
     let div_ifrm = document.getElementById(id);
-    let params = `${username?`username=${username}`:''}${valueBulding?`&price=${valueBulding}`:''}${stateBulding?`&stateBulding=${stateBulding}`:''}${currency?`&currency=${currency}`:''}${nameBulding?`&nameBulding=${nameBulding}`:''}${subDom?`&subDom=${subDom}`:''}${urlBulding?`&urlBulding=${urlBulding}`:''}`;
+    let params = `${username?`username=${username}`:''}${valueBulding?`&price=${valueBulding}`:''}${stateBulding?`&stateBulding=${stateBulding}`:''}${currency?`&currency=${currency}`:''}${nameBulding?`&nameBulding=${nameBulding}`:''}${subDom?`&subDom=${subDom}`:''}${urlBulding?`&urlBulding=${urlBulding}`:''}${propertyType?`&propertyType=${propertyType}`:''}${auction?`&auction=${auction}`:''}`;
     params = hash_text(params);
 
     if (/Mobile/i.test(navigator.userAgent)) {
@@ -37,7 +37,7 @@ const put_params_bulding = (data) => {
 
     div_ifrm.innerHTML += `
      <iframe 
-            src="https://novauat.morgana.mx/quote/first_step/${params.length>0 ? `?${params}`:''}"
+            src="http://nova.localhost:8003/quote/first_step/${params.length>0 ? `?${params}`:''}"
             style="width:100%; height:550px;"
         >
         </iframe>
@@ -49,6 +49,7 @@ const put_params_bulding = (data) => {
 
 window.onload = function() {
     const ifm_mrg_data = document.getElementById('id_space_sb').dataset;
+    debugger
     const data = {
         username:'',
         id:'id_space_sb',
@@ -58,6 +59,8 @@ window.onload = function() {
         nameBulding: ifm_mrg_data.nameBulding ? ifm_mrg_data.nameBulding : '',
         subDom: ifm_mrg_data.subDom ? ifm_mrg_data.subDom : '',
         urlBulding: ifm_mrg_data.urlBulding ? ifm_mrg_data.urlBulding:'',
+        propertyType:ifm_mrg_data.propertyType ? ifm_mrg_data.propertyType : '2',
+        auction:ifm_mrg_data.auction ? ifm_mrg_data.auction : 'false',
 
     }
    put_params_bulding(data)
