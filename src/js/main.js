@@ -22,29 +22,13 @@ const put_params_bulding = (data) => {
     let div_ifrm = document.getElementById(id);
     let params = `${username?`username=${username}`:''}${valueBulding?`&price=${valueBulding}`:''}${stateBulding?`&stateBulding=${stateBulding}`:''}${currency?`&currency=${currency}`:''}${nameBulding?`&nameBulding=${nameBulding}`:''}${subDom?`&subDom=${subDom}`:''}${urlBulding?`&urlBulding=${urlBulding}`:''}${propertyType?`&propertyType=${propertyType}`:''}${auction?`&auction=${auction}`:''}`;
     params = hash_text(params);
-
-    if (/Mobile/i.test(navigator.userAgent)) {
-      div_ifrm.innerHTML += `
-        <iframe 
-              src="https://novauat.morgana.mx/quote/first_step/${params.length>0 ? `?${params}`:''}"
-              style="width:100%; height:700px;"
-          >
-          </iframe>
-       `
-    } else {
-    
-      // El código se está ejecutando en un dispositivo de escritorio
-
     div_ifrm.innerHTML += `
-     <iframe 
+      <iframe 
             src="https://novauat.morgana.mx/quote/first_step/${params.length>0 ? `?${params}`:''}"
-            style="width:100%; height:550px;"
+            style="width:100%;${is_mobile ? 'height:700px;' : 'height:550px;'} "
         >
         </iframe>
-
       `
-    
-    }
 }
 
 window.onload = function() {
